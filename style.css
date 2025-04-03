@@ -1,0 +1,431 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-light: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    --bg-dark: linear-gradient(135deg, #1b1b1b, #121212);
+    --text-light: #333;
+    --text-dark: #e0e0e0;
+    --card-light: rgba(255, 255, 255, 0.35);
+    --card-dark: rgba(20, 20, 20, 0.7);
+    --button-light: #ff9800;
+    --button-dark: #ff5722;
+    --shadow-light: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    --shadow-dark: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    --transition: 0.4s ease-in-out;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* Allows scrolling when content overflows */
+    display: block;  /* Prevents flex from restricting height */
+    overflow-y: auto; /* Ensures vertical scrolling is enabled */
+    margin: 0;
+    transition: background var(--transition);
+}
+
+/* Dark Mode */
+body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+/* Main Container */
+.container {
+    background: var(--card-light);
+    backdrop-filter: blur(25px);
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    width: 95%;
+    max-width: 450px;
+    transition: all var(--transition);
+
+    /* ✅ Keep it centered */
+    margin: 50px auto; /* Centers it horizontally */
+    display: block;  /* Ensures it behaves like a normal div */
+}
+
+body.dark .container {
+    background: var(--card-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Title */
+.title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 1px;
+}
+
+body.dark .title {
+    color: var(--text-dark);
+}
+
+/* Theme Toggle */
+.theme-btn {
+    position: absolute;
+    top: 15px;  /* Moves it upwards */
+    right: 20px; /* Positions it toward the right */
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: transform 0.2s ease-in-out;
+}
+
+.theme-btn:hover {
+    transform: rotate(30deg);
+}
+
+body.dark .theme-btn {
+    color: var(--text-dark);
+}
+
+
+/* Date & Time */
+.date-time {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+body.dark .date-time {
+    color: var(--text-dark);
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 12px;
+    border-radius: 12px;
+    transition: transform var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.search-box:hover {
+    transform: scale(1.05);
+}
+
+body.dark .search-box {
+    background: rgba(50, 50, 50, 0.3);
+    box-shadow: var(--shadow-dark);
+}
+
+/* Input Field */
+input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: white;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+    background: #e0f7fa;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
+}
+
+body.dark input {
+    background: #333;
+    color: white;
+}
+
+/* Search Button */
+.search-btn {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: none;
+    background: var(--button-light);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.search-btn:hover {
+    background: #e68900;
+    transform: scale(1.05);
+}
+
+body.dark .search-btn {
+    background: var(--button-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+body.dark .search-btn:hover {
+    background: #ff3d00;
+}
+
+/* Toggle Switch */
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Adds spacing between toggle and text */
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+body.dark .toggle {
+    color: var(--text-dark);
+}
+
+.toggle input {
+    display: none;
+}
+
+.slider {
+    width: 55px;
+    height: 28px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.slider::before {
+    content: "°C";
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    transition: var(--transition);
+}
+
+.slider::after {
+    content: "°F";
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    transition: var(--transition);
+}
+
+.slider .circle {
+    width: 24px;
+    height: 24px;
+    background: white;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    border-radius: 50%;
+    transition: var(--transition);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input:checked + .slider {
+    background: #0072ff;
+}
+
+.toggle input:checked + .slider::before {
+    color: white;
+}
+
+.toggle input:checked + .slider::after {
+    color: #222;
+}
+
+.toggle input:checked + .slider .circle {
+    transform: translateX(27px);
+}
+
+/* Dark Mode */
+body.dark .slider {
+    background: #444;
+}
+
+body.dark .toggle input:checked + .slider {
+    background: #0088ff;
+}
+
+
+/* Weather Card */
+.weather-card {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--card-light);
+    border-radius: 12px;
+    color: var(--text-light);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-in-out forwards;
+    box-shadow: var(--shadow-light);
+}
+
+body.dark .weather-card {
+    background: var(--card-dark);
+    color: var(--text-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hourly & Weekly Forecast Containers */
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.forecast-item {
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.forecast-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .forecast-item {
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-dark);
+}
+
+#map {
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInMap 0.6s ease-in-out forwards;
+}
+
+/* Map Fade-in Animation */
+@keyframes fadeInMap {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Layer Control - Modern Glassmorphism */
+.layer-control {
+    position: fixed;
+    top: 15%;
+    right: 20px; /* Moves it to the right side */
+    width: 260px;
+    background: rgba(255, 255, 255, 0.15); /* Softer glass effect */
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.95);
+    opacity: 0;
+    animation: bounceIn 0.4s ease-in-out forwards 0.2s;
+}
+
+/* Bounce Effect for Layer Control */
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Dark Mode Support */
+body.dark .layer-control {
+    background: rgba(20, 20, 20, 0.7);
+}
+
+/* Layer Buttons */
+.layer-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px; /* Adds a small gap between buttons */
+    transform: scale(1);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover & Active Effects */
+.layer-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Layer Button - Highlight Effect */
+.layer-btn.active {
+    background: #0072ff;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 150, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Dark Mode - Improved Button Look */
+body.dark .layer-btn {
+    background: rgba(50, 50, 50, 0.5);
+    color: #e0e0e0;
+}
+
+/* Dark Mode Active Button */
+body.dark .layer-btn.active {
+    background: #0056c1;
+}
+
+/* Smooth Transition for Layer Toggles */
+.leaflet-layer {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Remove Opacity Slider */
+.opacity-slider {
+    display: none !important;
+}

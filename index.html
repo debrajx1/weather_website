@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Leaflet.js Stylesheet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Leaflet.js Library -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <h1 class="title">🌤️ Weather App</h1>
+            <button id="themeToggle" class="theme-btn">🌙</button>
+        </div>
+        
+        <div class="date-time" id="dateTime"></div>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button onclick="getWeather()" class="search-btn">Search</button>
+        </div>
+
+        <label class="toggle">
+            <input type="checkbox" id="unitToggle">
+            <span class="slider"></span>
+            <span class="toggle-text">°C / °F</span>
+        </label>
+
+        <div id="weatherInfo" class="weather-card"></div>
+
+                <!-- 🌍 Radar Map Section -->
+                <h3>Live Weather Radar</h3>
+                <div id="map" style="width: 100%; height: 300px;"></div>
+
+        <div id="hourlyForecast" class="forecast-card">
+            <h2>Hourly Forecast</h2>
+            <div class="forecast-container" id="hourlyContainer"></div>
+        </div>
+        
+        <div id="weeklyForecast" class="forecast-card">
+            <h2>Weekly Forecast</h2>
+            <div class="forecast-container" id="weeklyContainer"></div>
+        </div>
+
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
