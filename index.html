@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Leaflet.js Stylesheet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
-    <!-- Leaflet.js Library -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Leaflet.js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="top-bar">
-            <h1 class="title">🌤️ Weather App</h1>
-            <button id="themeToggle" class="theme-btn">🌙</button>
-        </div>
-        
-        <div class="date-time" id="dateTime"></div>
-        
-        <div class="search-box">
-            <input type="text" id="cityInput" placeholder="Enter city name">
-            <button onclick="getWeather()" class="search-btn">Search</button>
-        </div>
-
-        <label class="toggle">
-            <input type="checkbox" id="unitToggle">
-            <span class="slider"></span>
-            <span class="toggle-text">°C / °F</span>
+  <!-- 🌤️ Navigation Bar -->
+  <nav>
+    <h1>🌤️ Weather App</h1>
+    <div class="controls">
+      <div class="unit-switch">
+        <label class="switch">
+          <input type="checkbox" id="unitToggle">
+          <span class="slider"></span>
         </label>
+        <span class="label-text">°C / °F</span>
+      </div>      
+      <input type="text" id="cityInput" placeholder="Enter city name"/>
+      <button onclick="getWeather()" class="search-btn">Search</button>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+  </nav>
 
-        <div id="weatherInfo" class="weather-card"></div>
+  <!-- 🕒 Date & Time -->
+  <div class="date-time" id="dateTime"></div>
 
-                <!-- 🌍 Radar Map Section -->
-                <h3>Live Weather Radar</h3>
-                <div id="map" style="width: 100%; height: 300px;"></div>
-
-        <div id="hourlyForecast" class="forecast-card">
-            <h2>Hourly Forecast</h2>
-            <div class="forecast-container" id="hourlyContainer"></div>
-        </div>
-        
-        <div id="weeklyForecast" class="forecast-card">
-            <h2>Weekly Forecast</h2>
-            <div class="forecast-container" id="weeklyContainer"></div>
-        </div>
+  <!-- 🌦️ Main Weather Content: Horizontal Layout -->
+  <div class="main">
+    <!-- Current Weather -->
+    <div class="section" id="currentWeather">
+      <h2>Current Weather</h2>
+      <div id="weatherInfo" class="weather-card"></div>
     </div>
 
-    <footer class="footer">
-        <p>🚀 Powered by <span><a href="https://github.com/debrajx1" target="_blank"><strong>Mephisto X</strong></a></span></p>
-    </footer>
+    <!-- Radar Map -->
+    <div class="section" id="radarMap">
+      <h2>Live Radar</h2>
+      <div id="map" style="width: 100%; height: 250px;"></div>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Hourly Forecast -->
+    <div class="section" id="hourlyForecast">
+      <h2>Hourly Forecast</h2>
+      <div class="forecast-container" id="hourlyContainer"></div>
+    </div>
 
+    <!-- Weekly Forecast -->
+    <div class="section" id="weeklyForecast">
+      <h2>Weekly Forecast</h2>
+      <div class="forecast-container" id="weeklyContainer"></div>
+    </div>
+  </div>
+
+  <!-- 👣 Footer -->
+  <footer class="footer">
+    <p>🚀 Powered by <a href="https://github.com/debrajx1" target="_blank"><strong>Mephisto X</strong></a></p>
+  </footer>
+
+  <!-- 📜 Script -->
+  <script src="script.js"></script>
 </body>
 </html>

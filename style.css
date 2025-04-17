@@ -1,461 +1,472 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-:root {
-    --bg-light: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-    --bg-dark: linear-gradient(135deg, #1b1b1b, #121212);
-    --text-light: #333;
-    --text-dark: #e0e0e0;
-    --card-light: rgba(255, 255, 255, 0.35);
-    --card-dark: rgba(20, 20, 20, 0.7);
-    --button-light: #ff9800;
-    --button-dark: #ff5722;
-    --shadow-light: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    --shadow-dark: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    --transition: 0.4s ease-in-out;
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #1f2a38, #243b55);
+    color: #fff;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;  /* Allows scrolling when content overflows */
-    display: block;  /* Prevents flex from restricting height */
-    overflow-y: auto; /* Ensures vertical scrolling is enabled */
-    margin: 0;
-    transition: background var(--transition);
-}
-
-/* Dark Mode */
-body.dark {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-}
-
-/* Main Container */
-.container {
-    background: var(--card-light);
-    backdrop-filter: blur(25px);
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: var(--shadow-light);
-    text-align: center;
-    width: 95%;
-    max-width: 450px;
-    transition: all var(--transition);
-
-    /* ✅ Keep it centered */
-    margin: 50px auto; /* Centers it horizontally */
-    display: block;  /* Ensures it behaves like a normal div */
-}
-
-body.dark .container {
-    background: var(--card-dark);
-    box-shadow: var(--shadow-dark);
-}
-
-/* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Title */
-.title {
-    font-size: 26px;
-    font-weight: 600;
-    color: var(--text-light);
-    letter-spacing: 1px;
-}
-
-body.dark .title {
-    color: var(--text-dark);
-}
-
-/* Theme Toggle */
-.theme-btn {
-    position: absolute;
-    top: 15px;  /* Moves it upwards */
-    right: 20px; /* Positions it toward the right */
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-light);
-    transition: transform 0.2s ease-in-out;
-}
-
-.theme-btn:hover {
-    transform: rotate(30deg);
-}
-
-body.dark .theme-btn {
-    color: var(--text-dark);
-}
-
-
-/* Date & Time */
-.date-time {
+    flex-direction: column;
+    transition: background 0.3s ease, color 0.3s ease;
     font-size: 16px;
-    font-weight: 500;
-    color: var(--text-light);
-    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
-body.dark .date-time {
-    color: var(--text-dark);
-}
-
-/* Search Box */
-.search-box {
-    display: flex;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 12px;
-    border-radius: 12px;
-    transition: transform var(--transition);
-    box-shadow: var(--shadow-light);
-}
-
-.search-box:hover {
-    transform: scale(1.05);
-}
-
-body.dark .search-box {
-    background: rgba(50, 50, 50, 0.3);
-    box-shadow: var(--shadow-dark);
-}
-
-/* Input Field */
-input {
-    flex: 1;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    background: white;
-    color: #333;
-    transition: all 0.2s ease-in-out;
-}
-
-input:focus {
-    background: #e0f7fa;
-    box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
-}
-
-body.dark input {
-    background: #333;
-    color: white;
-}
-
-/* Search Button */
-.search-btn {
-    padding: 12px 15px;
-    font-size: 16px;
-    border: none;
-    background: var(--button-light);
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all var(--transition);
-    box-shadow: var(--shadow-light);
-}
-
-.search-btn:hover {
-    background: #e68900;
-    transform: scale(1.05);
-}
-
-body.dark .search-btn {
-    background: var(--button-dark);
-    box-shadow: var(--shadow-dark);
-}
-
-body.dark .search-btn:hover {
-    background: #ff3d00;
-}
-
-/* Toggle Switch */
-.toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px; /* Adds spacing between toggle and text */
-    margin-top: 15px;
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--text-light);
-}
-
-body.dark .toggle {
-    color: var(--text-dark);
-}
-
-.toggle input {
-    display: none;
-}
-
-.slider {
-    width: 55px;
-    height: 28px;
-    background: #ccc;
-    border-radius: 20px;
-    position: relative;
-    transition: var(--transition);
-    cursor: pointer;
-    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.slider::before {
-    content: "°C";
-    font-size: 14px;
-    font-weight: 600;
-    position: absolute;
-    left: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #555;
-    transition: var(--transition);
-}
-
-.slider::after {
-    content: "°F";
-    font-size: 14px;
-    font-weight: 600;
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    transition: var(--transition);
-}
-
-.slider .circle {
-    width: 24px;
-    height: 24px;
-    background: white;
-    position: absolute;
-    top: 2px;
-    left: 3px;
-    border-radius: 50%;
-    transition: var(--transition);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.toggle input:checked + .slider {
-    background: #0072ff;
-}
-
-.toggle input:checked + .slider::before {
-    color: white;
-}
-
-.toggle input:checked + .slider::after {
-    color: #222;
-}
-
-.toggle input:checked + .slider .circle {
-    transform: translateX(27px);
-}
-
-/* Dark Mode */
-body.dark .slider {
-    background: #444;
-}
-
-body.dark .toggle input:checked + .slider {
-    background: #0088ff;
-}
-
-
-/* Weather Card */
-.weather-card {
-    margin-top: 20px;
-    padding: 20px;
-    background: var(--card-light);
-    border-radius: 12px;
-    color: var(--text-light);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s ease-in-out forwards;
-    box-shadow: var(--shadow-light);
-}
-
-body.dark .weather-card {
-    background: var(--card-dark);
-    color: var(--text-dark);
-    box-shadow: var(--shadow-dark);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Hourly & Weekly Forecast Containers */
-.forecast-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 10px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.forecast-item {
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.forecast-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-body.dark .forecast-item {
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: var(--shadow-dark);
-}
-
-#map {
-    height: 500px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInMap 0.6s ease-in-out forwards;
-}
-
-/* Map Fade-in Animation */
-@keyframes fadeInMap {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Floating Layer Control - Modern Glassmorphism */
-.layer-control {
-    position: fixed;
-    top: 15%;
-    right: 20px; /* Moves it to the right side */
-    width: 260px;
-    background: rgba(255, 255, 255, 0.15); /* Softer glass effect */
-    backdrop-filter: blur(15px);
-    border-radius: 16px;
-    padding: 12px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
-    transform: scale(0.95);
-    opacity: 0;
-    animation: bounceIn 0.4s ease-in-out forwards 0.2s;
-}
-
-/* Bounce Effect for Layer Control */
-@keyframes bounceIn {
-    0% { transform: scale(0.8); opacity: 0; }
-    50% { transform: scale(1.05); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Dark Mode Support */
-body.dark .layer-control {
-    background: rgba(20, 20, 20, 0.7);
-}
-
-/* Layer Buttons */
-.layer-btn {
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px; /* Adds a small gap between buttons */
-    transform: scale(1);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Hover & Active Effects */
-.layer-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.05);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Active Layer Button - Highlight Effect */
-.layer-btn.active {
-    background: #0072ff;
-    color: white;
-    box-shadow: 0px 4px 10px rgba(0, 150, 255, 0.4);
-    transform: scale(1.1);
-}
-
-/* Dark Mode - Improved Button Look */
-body.dark .layer-btn {
-    background: rgba(50, 50, 50, 0.5);
+body.dark-mode {
+    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
     color: #e0e0e0;
 }
 
-/* Dark Mode Active Button */
-body.dark .layer-btn.active {
-    background: #0056c1;
+/* ==========================
+   Elegant Scrollbar Styling (Cross-browser)
+========================== */
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-/* Smooth Transition for Layer Toggles */
-.leaflet-layer {
-    transition: opacity 0.5s ease-in-out;
+::-webkit-scrollbar-track {
+    background: #1f2a38;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Remove Opacity Slider */
-.opacity-slider {
-    display: none !important;
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00bcd4, #008c9e);
+    border-radius: 10px;
+    border: 2px solid #1f2a38;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Fully Transparent Professional Footer Styles */
-.footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background: transparent; /* Total transparency */
-    text-align: center;
-    padding: 10px 6px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #333;
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #00e5ff, #00bcd4);
+    transform: scale(1.05);
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #00bcd4 #1f2a38;
+}
+
+/* Dark Mode Scrollbar */
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00acc1, #006064);
+    border: 2px solid #121212;
+}
+
+body.dark-mode * {
+    scrollbar-color: #00acc1 #121212;
+}
+
+
+/* ==========================
+   Navbar Styling
+========================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #1f2a38;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.3px;
-  }
-  
-  .footer a {
-    color: #2563eb;
+}
+
+nav h1 {
+    font-size: 2rem;
     font-weight: 600;
+    color: #00bcd4;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 188, 212, 0.3);
+}
+
+nav .controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+nav input,
+nav select,
+nav button {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #00bcd4;
+    background-color: #243b55;
+    color: #fff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+nav input::placeholder {
+    color: #bbb;
+}
+
+nav input:focus {
+    background-color: #2d3e50;
+    border-color: #00e5ff;
+}
+
+nav button:hover,
+nav select:hover,
+nav input:hover {
+    background-color: #00bcd4;
+    color: #000;
+    transform: scale(1.05);
+}
+
+
+
+/* Theme Toggle (Dark/Light) */
+#themeToggle {
+    background-color: transparent;
+    border: 1px solid #00bcd4;
+    color: #00bcd4;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+#themeToggle:hover {
+    background-color: #00bcd4;
+    color: #fff;
+}
+
+/* ==========================
+   Date and Time
+========================== */
+.date-time {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 1.0rem auto;
+    padding: 0.75rem 1.5rem;
+    width: fit-content;
+    background: rgba(0, 188, 212, 0.1);
+    border: 1px solid rgba(0, 188, 212, 0.5);
+    border-radius: 8px;
+    color: #00e5ff;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.15);
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(4px);
+}
+
+.date-time.updated {
+    animation: fadeTime 0.5s ease-in-out;
+}
+
+@keyframes fadeTime {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+
+/* ==========================
+   Main Layout - Single Row with 4 Boxes
+========================== */
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem;
+    overflow-x: hidden;
+    margin-top: 1rem;
+    flex: 1;
+}
+
+.section {
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    flex: 1 1 22%;
+    min-width: 280px;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    overflow: hidden;
+    text-align: center;
+  }
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.section .forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    overflow-x: hidden;
+    margin-top: 1rem;
+    flex-grow: 1;
+}
+
+/* ==========================
+   Weather Cards
+========================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.weather-icon {
+    font-size: 1rem;
+    color: #00bcd4;
+}
+
+.card span {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ==========================
+   Radar Map
+========================== */
+
+/* Ensure the radar container takes full height */
+#radarMap {
+    flex-grow: 1;
+    height: 100%; /* Make it stretch to the full container */
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-height: 483px; /* Optional: ensures consistent height */
+    object-fit: cover;  /* Ensures map fills space properly */
+}
+
+/* ==========================
+   Footer
+========================== */
+
+footer {
+    background-color: #1f2a38;
+    color: #fff;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer a {
+    color: #00bcd4;
     text-decoration: none;
+    font-weight: bold;
     transition: color 0.3s ease;
-  }
-  
-  .footer a:hover {
-    color: #1e40af;
-    text-decoration: none;
-  }
-  
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+
+/* ==========================
+   Responsiveness
+========================== */
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .section {
+        flex: 1 1 100%;
+    }
+
+    .forecast-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================
+   Dark Mode Enhancements
+========================== */
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+}
+
+nav.dark-mode {
+    background-color: #1f2a38;
+}
+
+nav.dark-mode button, nav.dark-mode input, nav.dark-mode select {
+    background-color: #2d3e50;
+}
+
+section.dark-mode {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+footer.dark-mode {
+    background-color: #2d3e50;
+}
+
+footer.dark-mode a {
+    color: #00bcd4;
+}
+
+/* ==========================
+   Scrollbar Styling
+========================== */
+
+.main::-webkit-scrollbar {
+    height: 12px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background: #00bcd4;
+    border-radius: 10px;
+}
+
+.main::-webkit-scrollbar-track {
+    background: #1f2a38;
+}
+
+/* ==========================
+   Button Hover Effects
+========================== */
+
+button, input[type="button"], select {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, input[type="button"]:hover, select:hover {
+    background-color: #00bcd4;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* ==========================
+   Temperature Unit Toggle (°C / °F)
+========================== */
+.unit-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #00bcd4;
+    padding: 0.5rem 0;
+}
+
+.unit-switch .label-text {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #00e5ff;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    vertical-align: middle;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: #2d3e50;
+    border: 2px solid #00bcd4;
+    border-radius: 34px;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.slider::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #00bcd4;
+    border-radius: 50%;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+    transform: translateX(0);
+}
+
+.switch input:checked + .slider {
+    background-color: #00bcd4;
+    border-color: #00e5ff;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+    background-color: #fff;
+}
+
+/* Dark Mode Support */
+body.dark-mode .unit-switch .label-text {
+    color: #00acc1;
+}
+
+body.dark-mode .slider {
+    background-color: #1c1c1c;
+    border-color: #00acc1;
+}
+
+body.dark-mode .switch input:checked + .slider {
+    background-color: #00acc1;
+    border-color: #00e5ff;
+}
+
+body.dark-mode .switch input:checked + .slider::before {
+    background-color: #fff;
+}
